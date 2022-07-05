@@ -3,6 +3,7 @@ const app = new Vue (
         el: `#app`,
         data : {
             index : 0,
+            activeThumb: 0,
             slides : [
                 {
                     image: 'img/01.jpg',
@@ -39,15 +40,19 @@ const app = new Vue (
 
             nextSlideImage : function() {
                 this.index++;
-                if (this.index === this.slides.length){
+                this.activeThumb++;
+                if ((this.index === this.slides.length) && (this.activeThumb === this.slides.length) ){
                     this.index = 0;
+                    this.activeThumb = 0;
                 }
             },
 
             previousSlideImage : function() {
                 this.index--;
-                if (this.index === -1){
+                this.activeThumb--;
+                if ((this.index === -1) && (this.activeThumb === -1)){
                     this.index = this.slides.length-1;
+                    this.activeThumb = this.slides.length-1;
                 }
             },
         },
