@@ -31,5 +31,25 @@ const app = new Vue (
                 }
             ],
         },
+
+        methods : {
+            log : function(arg){
+                console.log(arg);
+            },
+
+            nextSlideImage : function() {
+                this.index++;
+                if (this.index === this.slides.length){
+                    this.index = 0;
+                }
+            },
+
+            previousSlideImage : function() {
+                this.index--;
+                if (this.index === -1){
+                    this.index = this.slides.length-1;
+                }
+            },
+        },
     },
 );
