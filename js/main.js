@@ -2,8 +2,7 @@ const app = new Vue (
     {
         el: `#app`,
         data : {
-            index : 0,
-            activeThumb: 0,
+            slideIndex : 0,
             slides : [
                 {
                     image: 'img/01.jpg',
@@ -34,25 +33,22 @@ const app = new Vue (
         },
 
         methods : {
-            log : function(arg){
-                console.log(arg);
-            },
+            // log : function(arg){
+            //     console.log(arg);
+            // },
 
             nextSlideImage : function() {
-                this.index++;
-                this.activeThumb++;
-                if ((this.index === this.slides.length) && (this.activeThumb === this.slides.length) ){
-                    this.index = 0;
-                    this.activeThumb = 0;
+                this.slideIndex++;
+                if (this.slideIndex === this.slides.length){
+                    this.slideIndex = 0;
                 }
             },
 
             previousSlideImage : function() {
-                this.index--;
+                this.slideIndex--;
                 this.activeThumb--;
-                if ((this.index === -1) && (this.activeThumb === -1)){
-                    this.index = this.slides.length-1;
-                    this.activeThumb = this.slides.length-1;
+                if (this.slideIndex === -1) {
+                    this.slideIndex = this.slides.length-1;
                 }
             },
         },
